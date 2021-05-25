@@ -25,7 +25,7 @@
                         {{ config('app.name', 'Hospital Registry System') }} {{ ucfirst(config('multiauth.prefix')) }}
                     </a>
                     <!-- Collapsed Hamburger -->
-                    <button type="button" class="btn btn-secondary btn-sm" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+                    <button type="button" class="btn btn-light btn-sm" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
                         Navbar
                     </button>
                 </div>
@@ -48,10 +48,16 @@
                                 </a>
 
                             <ul class="dropdown-menu">
-                                <li class="d-flex justify-content-center">
+                                <li class="d-flex justify-content-around">
                                     @admin('super')
                                     <a class="col-sm-1" href="{{ route('admin.show') }}">{{ ucfirst(config('multiauth.prefix')) }}</a>
                                     <a class="col-sm-1" href="{{ route('admin.roles') }}">Roles</a> 
+                                    @endadmin
+                                    @admin('hospital_agent','doctor')
+                                    <a class="col-sm-1" href="{{ route('admin.roles') }}">Patient</a> 
+                                    @endadmin
+                                    @admin('doctor')
+                                    <a class="col-sm-1" href="{{ route('admin.roles') }}">Prescription</a> 
                                     @endadmin
                                     <a class="col-sm-1" href="{{ route('admin.logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

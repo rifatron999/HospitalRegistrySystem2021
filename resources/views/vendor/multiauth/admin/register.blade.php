@@ -62,9 +62,11 @@
                             <div class="col-md-6">
                                 <select name="hospital_id" id="hospital_id" class="form-control {{ $errors->has('hospital_id') ? ' is-invalid' : '' }}">
                                     <option selected disabled>Select Hospital</option>
-                                    @foreach ($roles as $role)
+                                    <!-- @foreach ($roles as $role)
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                    @endforeach
+                                    @endforeach -->
+                                    <option value="1">Labaid</option>
+                                    <option value="2">Apllo</option>
                                 </select>
                             </div>
                         </div>
