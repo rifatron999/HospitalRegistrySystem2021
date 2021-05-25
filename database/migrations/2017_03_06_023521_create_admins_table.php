@@ -18,6 +18,7 @@ class CreateAdminsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->bigInteger('hospital_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

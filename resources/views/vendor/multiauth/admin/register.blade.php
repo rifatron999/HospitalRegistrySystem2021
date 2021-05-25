@@ -56,6 +56,18 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="hospital_id" class="col-md-4 control-label">Hospital</label>
+
+                            <div class="col-md-6">
+                                <select name="hospital_id" id="hospital_id" class="form-control {{ $errors->has('hospital_id') ? ' is-invalid' : '' }}">
+                                    <option selected disabled>Select Hospital</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <div class="col-md-8 col-md-offset-4">
