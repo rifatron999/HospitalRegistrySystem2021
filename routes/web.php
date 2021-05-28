@@ -22,4 +22,9 @@ Route::get('/', function () {
 ], function () {
 	Route::get('/hospital','HospitalController@index')->middleware('role:system_user')->name('admin.hospital');
 	Route::post('/hospital','HospitalController@store')->middleware('role:system_user')->name('admin.hospital.store');
+	Route::get('/hospitalDelete/{id}','HospitalController@destroy')->name('admin.hospital.destroy');
+	Route::get('/hospitalEditView/{id}','HospitalController@edit')->name('admin.hospital.edit');
+	Route::post('/hospitalUpdate/{id}','HospitalController@update')->middleware('role:system_user')->name('admin.hospital.update');
+
+
 });

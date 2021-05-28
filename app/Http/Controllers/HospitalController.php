@@ -19,7 +19,8 @@ class HospitalController extends Controller
     }
     public function index()
     {
-        return view('multiauth::admin.system_user.hospital');
+        $result = Hospital::paginate(2);
+        return view('multiauth::admin.system_user.hospital',compact('result'));
     }
 
     /**
@@ -40,10 +41,14 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|unique:hospitals',
+            'phone' => 'required|unique:hospitals',
+            'address' => 'required',
+        ]);
          $inputs = $request->except('_token');
-         //dd($inputs);
          $hospital = Hospital::create($inputs);
-         return back()->with('status','✔ Hospital Added');
+         return back()->with('status','✔ Added');
     }
 
     /**
@@ -65,7 +70,9 @@ class HospitalController extends Controller
      */
     public function edit($id)
     {
-        //
+         $id = \Crypt::decrypt($id);
+        $result = Hospital::where('id',$id)->first();
+        return view('multiauth::admin.system_user.hospitalEdit',compact('result'));
     }
 
     /**
@@ -77,7 +84,17 @@ class HospitalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
+        $id = \Crypt::decrypt($id);
+        $inputs = $request->except('_token');
+        $hospital = Hospital::find(  $id  );
+        //dd( $inputs) ; 
+        $hospital->update($inputs);
+     return back()->with('status','✔ Updated');
     }
 
     /**
@@ -88,6 +105,10 @@ class HospitalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //dd($id);
+        $id = \Crypt::decrypt($id);
+        $delete = Hospital::find($id);
+        $delete->delete();
+        return back()->with('status',"✔ REMOVED");
     }
 }
