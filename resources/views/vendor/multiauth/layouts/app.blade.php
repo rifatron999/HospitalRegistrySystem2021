@@ -12,7 +12,9 @@
     <title>{{ config('app.name', 'Hospital Registry System 2021') }}</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -84,6 +86,14 @@
             @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
+                </div>
+            @endif
+            @if(count($errors) > 0)
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    @foreach($errors->all() as $err)
+                        ⚠️{{$err}} <br>
+                    @endforeach</strong></marquee></p> 
                 </div>
             @endif
         </div>

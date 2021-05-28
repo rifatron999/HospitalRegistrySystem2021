@@ -60,13 +60,14 @@
                             <label for="hospital_id" class="col-md-4 control-label">Hospital</label>
 
                             <div class="col-md-6">
+                                @php
+                                    $hospital= App\Hospital::select('id' , 'name')->get()
+                                @endphp
                                 <select name="hospital_id" id="hospital_id" class="form-control {{ $errors->has('hospital_id') ? ' is-invalid' : '' }}">
                                     <option selected disabled>Select Hospital</option>
-                                    <!-- @foreach ($roles as $role)
-                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                    @endforeach -->
-                                    <option value="1">Labaid</option>
-                                    <option value="2">Apllo</option>
+                                    @foreach ($hospital as $data)
+                                        <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

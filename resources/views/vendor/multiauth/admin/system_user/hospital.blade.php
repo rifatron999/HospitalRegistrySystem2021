@@ -33,35 +33,34 @@
                     </form>
                     <hr>
                     <table class="table table-striped table-hover table-bordered" id="employee_table" width="100%" cellspacing="0" >
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
-                <tbody>
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                @foreach($employees as $key => $s)
-                    <tr>
-                        <td>{{ $key+1 }}</td>
-                        <td>{{$s->name}}</td>
-                        <td>{{$s->phone}}</td>
-                        <td>{{$s->address}}</td>
-                        <td>
-                            <a href="{{route('employeeDetails',Crypt::encrypt($s->id))}}" title="See Details" target="_blank" class="btn btn-primary "><i class="fas fa-arrow-circle-right"></i> </a>
-                            <a href="{{route('employeeDetailsPdf',Crypt::encrypt($s->id))}}" title="Downlode Employee Details" class="btn btn-default "><i class="fas fa-file-invoice-dollar"></i> </a>
-                            <a class="btn btn-success"  href="{{route('employeeEditView',Crypt::encrypt($s->id))}}" target="_blank" title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="{{route('employeeRemove',Crypt::encrypt($s->id))}}" title="Remove Employee" onclick="return confirm('Are you sure ?')" class="btn btn-danger "><i class="fas fa-trash"></i> </a>
-                        </td>
+                        @foreach($result as $key => $data)
+                            <tr>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{$data->name}}</td>
+                                <td>{{$data->phone}}</td>
+                                <td>{{$data->address}}</td>
+                                <td>
+                                    <a class="btn btn-success btn-sm"  href="{{route('admin.hospital.edit',Crypt::encrypt($data->id))}}" target="_blank" title="Edit"><i class="fa fa-edit"></i></a>
+                                    <a href="{{route('admin.hospital.destroy',Crypt::encrypt($data->id))}}" title="Remove Employee" onclick="return confirm('Are you sure ?')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </a>
+                                </td>
 
-                    </tr>
-                @endforeach
+                            </tr>
+                        @endforeach
 
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                    {{ $result->links() }}
                 </div>
             </div>
         </div>

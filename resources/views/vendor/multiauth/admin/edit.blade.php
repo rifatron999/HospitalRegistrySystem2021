@@ -39,6 +39,27 @@
                                 </span> 
                             @endif
                         </div>
+                        <div class="form-group row">
+                             <label for="role_id" class="col-md-4 col-form-label text-md-right">Hospital</label>
+
+
+                            <div class="col-md-6">
+                                @php
+                                    $hospital= App\Hospital::select('id' , 'name')->get();
+                                    //dd($admin);
+                                @endphp
+                                <select name="hospital_id" id="hospital_id" class="form-control {{ $errors->has('hospital_id') ? ' is-invalid' : '' }}">
+                                    <option selected disabled>Select Hospital</option>
+                                    @foreach ($hospital as $data)
+                                    @if($admin->hospital_id == $data->id )
+                                        <option value="{{ $data->id }}" selected>{{ $data->name }}</option>
+                                    @else
+                                        <option value="{{ $data->id }}" >{{ $data->name }}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
