@@ -21,7 +21,7 @@
             <div class="container">
                 <div class="navbar-header">
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ route('admin.home') }}">
+                    <a class="navbar-brand" href="{{ route('admin.login') }}">
                         {{ config('app.name', 'Hospital Registry System') }} {{ ucfirst(config('multiauth.prefix')) }}
                     </a>
                     <!-- Collapsed Hamburger -->
@@ -47,12 +47,17 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu-s border ">
                                 <li class="d-flex justify-content-around">
                                     @admin('super')
                                     <a class="col-sm-1" href="{{ route('admin.show') }}">{{ ucfirst(config('multiauth.prefix')) }}</a>
                                     <a class="col-sm-1" href="{{ route('admin.roles') }}">Roles</a> 
                                     @endadmin
+                                    @admin('system_user')
+                                    <a class="col-sm-1" href="{{ route('admin.roles') }}">Hospital</a> 
+                                    <a class="col-sm-1" href="{{ route('admin.roles') }}">Treament</a> 
+                                    <a class="col-sm-1" href="{{ route('admin.roles') }}">Disease</a> 
+                                    @endadmin()
                                     @admin('hospital_agent','doctor')
                                     <a class="col-sm-1" href="{{ route('admin.roles') }}">Patient</a> 
                                     @endadmin
