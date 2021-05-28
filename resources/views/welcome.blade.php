@@ -87,15 +87,15 @@
                     <script src="https://online.visual-paradigm.com/app/diagrams/embed.js"></script><div class="vponline-viewer" data-w="640" data-h="480" data-id="1" data-ws="xvedcsue" data-toolbar="1" data-responsive="0"></div>
                 </div>
 
-               <!--  <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
+                <div class="links">
+                    <a href="{{ route('admin.login') }}">Login</a>
+                    <!-- <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://blog.laravel.com">Blog</a>
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div> -->
+                    <a href="https://github.com/laravel/laravel">GitHub</a> -->
+                </div>
             </div>
         </div>
     </body>

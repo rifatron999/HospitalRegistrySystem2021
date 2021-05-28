@@ -7,11 +7,7 @@
                 <div class="panel-heading">{{ ucfirst(config('multiauth.prefix')) }} Dashboard</div>
 
                 <div class="panel-body">
-                    @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                    @endif You are logged in to {{ config('multiauth.prefix') }} side!
+                     You are logged in to {{ config('multiauth.prefix') }} side!
                 </div>
             </div>
         </div>
