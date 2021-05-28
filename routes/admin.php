@@ -1,7 +1,5 @@
 <?php
 
-
-
 Route::group([
     'namespace'  => 'Bitfumes\Multiauth\Http\Controllers',
     'middleware' => 'web',

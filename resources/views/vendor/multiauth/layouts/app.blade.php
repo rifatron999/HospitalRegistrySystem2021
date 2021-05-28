@@ -54,7 +54,7 @@
                                     <a class="col-sm-1" href="{{ route('admin.roles') }}">Roles</a> 
                                     @endadmin
                                     @admin('system_user')
-                                    <a class="col-sm-1" href="{{ route('admin.roles') }}">Hospital</a> 
+                                    <a class="col-sm-1" href="{{ route('admin.hospital') }}">Hospital</a> 
                                     <a class="col-sm-1" href="{{ route('admin.roles') }}">Treament</a> 
                                     <a class="col-sm-1" href="{{ route('admin.roles') }}">Disease</a> 
                                     @endadmin()
@@ -80,7 +80,11 @@
                 </div>
             </div>
         </nav>
-
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
         @yield('content')
     </div>
 
