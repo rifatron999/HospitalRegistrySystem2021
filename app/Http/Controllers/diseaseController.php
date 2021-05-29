@@ -34,7 +34,7 @@ class diseaseController extends Controller
             'description' => 'required | max:191',
         ]);
          $inputs = $request->except('_token');
-         $hospital = Disease::create($inputs);
+         $create = Disease::create($inputs);
          return back()->with('status','✔ Added');
     }
 
@@ -62,9 +62,9 @@ class diseaseController extends Controller
         ]);
         $id = \Crypt::decrypt($id);
         $inputs = $request->except('_token');
-        $hospital = Disease::find(  $id  );
+        $update = Disease::find(  $id  );
         //dd( $inputs) ; 
-        $hospital->update($inputs);
+        $update->update($inputs);
      return back()->with('status','✔ Updated');
     }
 

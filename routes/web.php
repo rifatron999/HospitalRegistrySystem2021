@@ -39,5 +39,12 @@ Route::get('/', function () {
 	Route::get('/diseaseDelete/{id}','diseaseController@destroy')->middleware('role:system_user')->name('admin.disease.destroy');
 	Route::get('/diseaseEditView/{id}','diseaseController@edit')->middleware('role:system_user')->name('admin.disease.edit');
 	Route::post('/diseaseUpdate/{id}','diseaseController@update')->middleware('role:system_user')->name('admin.disease.update');
+//doctor
+	//patient
+	Route::get('/patient','patientController@index')->middleware('role:doctor')->name('admin.patient');
+	Route::post('/patient','patientController@store')->middleware('role:doctor')->name('admin.patient.store');
+	Route::get('/patientDelete/{id}','patientController@destroy')->middleware('role:doctor')->name('admin.patient.destroy');
+	Route::get('/patientEditView/{id}','patientController@edit')->middleware('role:doctor')->name('admin.patient.edit');
+	Route::post('/patientUpdate/{id}','patientController@update')->middleware('role:doctor')->name('admin.patient.update');
 
 });
