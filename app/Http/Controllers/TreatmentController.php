@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Hospital;
+use App\Treatment;
 
-class HospitalController extends Controller
+class TreatmentController extends Controller
 {
     
     public function __construct()
@@ -15,11 +15,11 @@ class HospitalController extends Controller
     }
     public function index()
     {
-        $result = Hospital::paginate(2);
-        return view('multiauth::admin.system_user.hospital',compact('result'));
+        $result = Treatment::paginate(2);
+        return view('multiauth::admin.system_user.treatment',compact('result'));
     }
 
-   
+    
     public function create()
     {
         //
@@ -29,12 +29,12 @@ class HospitalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:hospitals',
-            'phone' => 'required|unique:hospitals',
-            'address' => 'required',
+            'name' => 'required|unique:treatments',
+            'type' => 'required',
+            'description' => 'required | max:191',
         ]);
          $inputs = $request->except('_token');
-         $hospital = Hospital::create($inputs);
+         $hospital = Treatment::create($inputs);
          return back()->with('status','✔ Added');
     }
 
@@ -48,8 +48,8 @@ class HospitalController extends Controller
     public function edit($id)
     {
          $id = \Crypt::decrypt($id);
-        $result = Hospital::where('id',$id)->first();
-        return view('multiauth::admin.system_user.hospitalEdit',compact('result'));
+        $result = Treatment::where('id',$id)->first();
+        return view('multiauth::admin.system_user.treatmentEdit',compact('result'));
     }
 
     
@@ -57,12 +57,12 @@ class HospitalController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
+            'type' => 'required',
+            'description' => 'required | max:191',
         ]);
         $id = \Crypt::decrypt($id);
         $inputs = $request->except('_token');
-        $hospital = Hospital::find(  $id  );
+        $hospital = Treatment::find(  $id  );
         //dd( $inputs) ; 
         $hospital->update($inputs);
      return back()->with('status','✔ Updated');
@@ -73,7 +73,7 @@ class HospitalController extends Controller
     {
         //dd($id);
         $id = \Crypt::decrypt($id);
-        $delete = Hospital::find($id);
+        $delete = Treatment::find($id);
         $delete->delete();
         return back()->with('status',"✔ REMOVED");
     }
