@@ -34,7 +34,7 @@ class HospitalController extends Controller
             'address' => 'required',
         ]);
          $inputs = $request->except('_token');
-         $hospital = Hospital::create($inputs);
+         $create = Hospital::create($inputs);
          return back()->with('status','✔ Added');
     }
 
@@ -62,9 +62,9 @@ class HospitalController extends Controller
         ]);
         $id = \Crypt::decrypt($id);
         $inputs = $request->except('_token');
-        $hospital = Hospital::find(  $id  );
+        $update = Hospital::find(  $id  );
         //dd( $inputs) ; 
-        $hospital->update($inputs);
+        $update->update($inputs);
      return back()->with('status','✔ Updated');
     }
 

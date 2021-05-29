@@ -32,7 +32,7 @@
                     </button>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="collapse navbar-collapse border border-success border-top-0" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
@@ -49,7 +49,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                            <ul class="dropdown-menu-s border ">
+                            <ul class="dropdown-menu-s border  ">
                                 <li class="d-flex justify-content-around">
                                     @admin('super')
                                     <a class="col-sm-1" href="{{ route('admin.show') }}">{{ ucfirst(config('multiauth.prefix')) }}</a>
@@ -61,7 +61,8 @@
                                     <a class="col-sm-1" href="{{ route('admin.disease') }}">Disease</a> 
                                     @endadmin()
                                     @admin('hospital_agent','doctor')
-                                    <a class="col-sm-1" href="{{ route('admin.roles') }}">Patient</a> 
+                                    <a class="col-sm-1" href="{{ route('admin.patient') }}">Patient</a> 
+                                    <a class="col-sm-1" href="{{ route('admin.roles') }}">Refer</a> 
                                     @endadmin
                                     @admin('doctor')
                                     <a class="col-sm-1" href="{{ route('admin.roles') }}">Prescription</a> 

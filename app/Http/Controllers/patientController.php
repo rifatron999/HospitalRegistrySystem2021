@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Treatment;
+use App\Patient;
 
-class TreatmentController extends Controller
+class patientController extends Controller
 {
     
     public function __construct()
@@ -15,8 +15,8 @@ class TreatmentController extends Controller
     }
     public function index()
     {
-        $result = Treatment::paginate(2);
-        return view('multiauth::admin.system_user.treatment',compact('result'));
+        $result = Patient::paginate(2);
+        return view('multiauth::admin.patient',compact('result'));
     }
 
     
@@ -29,12 +29,14 @@ class TreatmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:treatments',
-            'type' => 'required',
-            'description' => 'required | max:191',
+            'name' => 'required',
+            'code' => 'required|unique:patients',
+            'email' => 'required|unique:patients',
+            'address' => 'required | max:191',
         ]);
          $inputs = $request->except('_token');
-         $create = Treatment::create($inputs);
+         //dd($inputs);
+         $create = Patient::create($inputs);
          return back()->with('status','✔ Added');
     }
 
@@ -48,8 +50,8 @@ class TreatmentController extends Controller
     public function edit($id)
     {
          $id = \Crypt::decrypt($id);
-        $result = Treatment::where('id',$id)->first();
-        return view('multiauth::admin.system_user.treatmentEdit',compact('result'));
+        $result = Patient::where('id',$id)->first();
+        return view('multiauth::admin.patientEdit',compact('result'));
     }
 
     
@@ -57,13 +59,13 @@ class TreatmentController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'type' => 'required',
-            'description' => 'required | max:191',
+            'code' => 'required',
+            'email' => 'required',
+            'address' => 'required | max:191',
         ]);
         $id = \Crypt::decrypt($id);
         $inputs = $request->except('_token');
-        $update = Treatment::find(  $id  );
-        //dd( $inputs) ; 
+        $update = Patient::find(  $id  );
         $update->update($inputs);
      return back()->with('status','✔ Updated');
     }
@@ -73,7 +75,7 @@ class TreatmentController extends Controller
     {
         //dd($id);
         $id = \Crypt::decrypt($id);
-        $delete = Treatment::find($id);
+        $delete = Patient::find($id);
         $delete->delete();
         return back()->with('status',"✔ REMOVED");
     }
