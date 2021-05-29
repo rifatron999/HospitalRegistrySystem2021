@@ -4,17 +4,17 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default ">
-                <div class="panel-heading">Treatment</div>
+                <div class="panel-heading">Disease</div>
                 <hr>
                 <div class="panel-body">
-                    <form method="post" enctype="multipart/form-data" action="{{ route('admin.treatment.store') }}">
+                    <form method="post" enctype="multipart/form-data" action="{{ route('admin.disease.store') }}">
                         @csrf
                         <div class="form-group row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-10">
                                 <label  class=" label label-primary">Name</label>
                                 <input name="name" type="text" class="form-control form-control-sm" value="{{ old('name') }}" required >
                             </div>
-                            <div class="col-sm-6">
+                            <!-- <div class="col-sm-6">
                                 <label  class=" label label-primary">Type</label>
                                 <select name="type" class="form-control form-control-sm" required>
                                         <option value="">select</option>
@@ -22,7 +22,7 @@
                                         <option value="Therapy">Therapy</option>
                                         <option value="Surgery">Surgery</option>
                                 </select>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-12">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group row d-flex justify-content-center">
                             <div class="">
-                                <button type="submit" class="btn btn-success btn-sm center-block">+ Add Treatment</button>
+                                <button type="submit" class="btn btn-success btn-sm center-block">+ Add Disease</button>
                             </div>
                         </div>
                     </form>
@@ -42,7 +42,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Type</th>
+                            <!-- <th scope="col">Type</th> -->
                             <th scope="col">Description</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -53,11 +53,11 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{$data->name}}</td>
-                                <td>{{$data->type}}</td>
+                                <!-- <td>{{$data->type}}</td> -->
                                 <td>{{$data->description}}</td>
                                 <td>
-                                    <a class="btn btn-success btn-sm"  href="{{route('admin.treatment.edit',Crypt::encrypt($data->id))}}" target="_blank" title="Edit"><i class="fa fa-edit"></i></a>
-                                    <a href="{{route('admin.treatment.destroy',Crypt::encrypt($data->id))}}" title="Remove Employee" onclick="return confirm('Are you sure ?')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </a>
+                                    <a class="btn btn-success btn-sm"  href="{{route('admin.disease.edit',Crypt::encrypt($data->id))}}" target="_blank" title="Edit"><i class="fa fa-edit"></i></a>
+                                    <a href="{{route('admin.disease.destroy',Crypt::encrypt($data->id))}}" title="Remove Employee" onclick="return confirm('Are you sure ?')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </a>
                                 </td>
 
                             </tr>
