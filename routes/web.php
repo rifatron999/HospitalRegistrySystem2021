@@ -33,5 +33,11 @@ Route::get('/', function () {
 	Route::get('/treatmentDelete/{id}','TreatmentController@destroy')->middleware('role:system_user')->name('admin.treatment.destroy');
 	Route::get('/treatmentEditView/{id}','TreatmentController@edit')->middleware('role:system_user')->name('admin.treatment.edit');
 	Route::post('/treatmentUpdate/{id}','TreatmentController@update')->middleware('role:system_user')->name('admin.treatment.update');
+	//disease
+	Route::get('/disease','diseaseController@index')->middleware('role:system_user')->name('admin.disease');
+	Route::post('/disease','diseaseController@store')->middleware('role:system_user')->name('admin.disease.store');
+	Route::get('/diseaseDelete/{id}','diseaseController@destroy')->middleware('role:system_user')->name('admin.disease.destroy');
+	Route::get('/diseaseEditView/{id}','diseaseController@edit')->middleware('role:system_user')->name('admin.disease.edit');
+	Route::post('/diseaseUpdate/{id}','diseaseController@update')->middleware('role:system_user')->name('admin.disease.update');
 
 });

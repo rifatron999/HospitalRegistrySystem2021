@@ -58,7 +58,7 @@
                                     @admin('system_user')
                                     <a class="col-sm-1" href="{{ route('admin.hospital') }}">Hospital</a> 
                                     <a class="col-sm-1" href="{{ route('admin.treatment') }}">Treament</a> 
-                                    <a class="col-sm-1" href="{{ route('admin.roles') }}">Disease</a> 
+                                    <a class="col-sm-1" href="{{ route('admin.disease') }}">Disease</a> 
                                     @endadmin()
                                     @admin('hospital_agent','doctor')
                                     <a class="col-sm-1" href="{{ route('admin.roles') }}">Patient</a> 
