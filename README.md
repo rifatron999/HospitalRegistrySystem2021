@@ -1,6 +1,6 @@
 # HospitalRegistrySystem2021
 this is a project for hospital registry system  <br>
-Laravel | Bootstrap 4 | Select2 | Jquery | Accessors & Mutators | MySql | MultiAUth Admin | Mailable | ERD | Eager Loading |
+Laravel | Bootstrap 4 | Select2 | Jquery | Accessors & Mutators | MySql | MultiAUth Admin | Mailable | ERD | Eager Loading | DataTables
 ```
 composer require bitfumes/laravel-multiauth
 ```

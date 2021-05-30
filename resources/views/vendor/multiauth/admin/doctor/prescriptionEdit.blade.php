@@ -40,7 +40,11 @@
                                 <select name="hospital_id" class="form-control form-control-sm select2" required>
                                     <option value="">select</option>
                                     @foreach( $hospital as $data ) 
-                                        <option value="{{ $data['id']}}" selected >{{ $data['name'] }}</option>
+                                        @if( $data['id'] ==  $result[0]['hospital_id']) 
+                                            <option value="{{ $data['id']}}" selected >{{ $data['name'] }}</option>
+                                        @else
+                                            <option value="{{ $data['id']}}"  disabled>{{ $data['name'] }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -51,13 +55,11 @@
                                 <select name="disease_id[]" class="form-control form-control-sm select2" required multiple title="Please Press Ctrl for select Multiple">
                                     <option value="">select</option>
                                     @foreach( $diseaseList as $data ) 
-                                        @foreach( $result[0]['disease'] as $dta )
-                                            @if( $data['id'] ==  $dta['id'] )
+                                            @if (in_array($data['id'] , $result[0]['disease_id']))
                                                 <option value="{{ $data['id']}}" selected>{{ $data['name'] }}</option>
                                             @else
                                                 <option value="{{ $data['id']}}" >{{ $data['name'] }}</option>
                                             @endif
-                                        @endforeach   
                                     @endforeach
                                 </select>
                             </div>
@@ -66,13 +68,11 @@
                                 <select name="treatment_id[]" class="form-control form-control-sm select2" required multiple title="Please Press Ctrl for select" >
                                     <option value="">select</option>
                                     @foreach( $treatmentList as $data ) 
-                                        @foreach( $result[0]['treatment'] as $dta )
-                                            @if( $data['id'] ==  $dta['id'] )
+                                        @if (in_array($data['id'] , $result[0]['treatment_id']))
                                                 <option value="{{ $data['id']}}" selected>{{ $data['name'] }}</option>
                                             @else
                                                 <option value="{{ $data['id']}}" >{{ $data['name'] }}</option>
                                             @endif
-                                        @endforeach
                                     @endforeach
                                 </select>
                             </div>

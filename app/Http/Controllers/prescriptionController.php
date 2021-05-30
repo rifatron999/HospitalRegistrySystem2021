@@ -97,7 +97,7 @@ class prescriptionController extends Controller
         $patientList = Patient::select('id' , 'name' , 'code')->get()->toArray() ;
         $diseaseList = Disease::select('id' , 'name')->get()->toArray() ;
         $treatmentList = Treatment::select('id' , 'name')->get()->toArray() ;
-        $hospital = Hospital::select('id' , 'name')->where('id' , auth()->user()->hospital_id )->get()->toArray() ;
+        $hospital = Hospital::select('id' , 'name')/*->where('id' , auth()->user()->hospital_id )*/->get()->toArray() ;
         $result = Prescription::with([
                                 'patient' => function($q){
                                     $q->select('id', 'name');
@@ -118,13 +118,13 @@ class prescriptionController extends Controller
                             ->where('id', $id )
                             ->orderBy('date', 'desc')
                             ->get();
-        foreach ($result as $key => $value) {
+        /*foreach ($result as $key => $value) {
             $diseaseList = Disease::select('id' , 'name' )->whereIn('id' , $value['disease_id'])->get()->toArray() ;
             $result[$key]['disease'] = $diseaseList;
 
             $treatmentList = Treatment::select('id' , 'name' )->whereIn('id' , $value['treatment_id'])->get()->toArray() ;
             $result[$key]['treatment'] = $treatmentList;
-        }
+        }*/
         //dd( $result->toArray() );
         return view('multiauth::admin.doctor.prescriptionEdit', compact('result' , 'patientList' , 'hospital' ,'diseaseList' , 'treatmentList'));
     }
