@@ -22,7 +22,7 @@
                         <div class="form-group row">
                             <label for="role_id" class="col-md-4 col-form-label text-md-right">Assign Role</label>
 
-                            <select name="role_id[]" id="role_id" class="form-control col-md-6 {{ $errors->has('role_id') ? ' is-invalid' : '' }}" multiple>
+                            <select name="role_id[]" id="role_id" class="form-control col-md-6 select2 {{ $errors->has('role_id') ? ' is-invalid' : '' }}" multiple>
                                 <option selected disabled>Select Role</option>
                                 @foreach ($roles as $role)
                                     <option value="{{ $role->id }}" 
@@ -48,7 +48,7 @@
                                     $hospital= App\Hospital::select('id' , 'name')->get();
                                     //dd($admin);
                                 @endphp
-                                <select name="hospital_id" id="hospital_id" class="form-control {{ $errors->has('hospital_id') ? ' is-invalid' : '' }}">
+                                <select name="hospital_id" id="hospital_id" class="form-control select2 {{ $errors->has('hospital_id') ? ' is-invalid' : '' }}">
                                     <option selected disabled>Select Hospital</option>
                                     @foreach ($hospital as $data)
                                     @if($admin->hospital_id == $data->id )

@@ -24,8 +24,8 @@ class CreatePrescriptionsTable extends Migration
             $table->integer('patient_id');
             $table->integer('hospital_id');
             $table->integer('doctor_id');
-            $table->string('disease_ids');
-            $table->string('treatment_ids');
+            $table->string('disease_id');
+            $table->string('treatment_id');
             $table->timestamps();
         });
     }

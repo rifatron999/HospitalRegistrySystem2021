@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Prescription;
+use App\Patient;
+use App\Hospital;
+use App\Disease;
+use App\Treatment;
 
 class prescriptionController extends Controller
 {
@@ -15,8 +19,13 @@ class prescriptionController extends Controller
     }
     public function index()
     {
+        $patientList = Patient::select('id' , 'name' , 'code')->get()->toArray() ;
+        $diseaseList = Disease::select('id' , 'name')->get()->toArray() ;
+        $treatmentList = Treatment::select('id' , 'name')->get()->toArray() ;
+        $hospital = Hospital::select('id' , 'name')->where('id' , auth()->user()->hospital_id )->get()->toArray() ;
         $result = Prescription::where('doctor_id', auth()->user()->id )->paginate(2);
-        return view('multiauth::admin.doctor.Prescription',compact('result'));
+        dd($result->toArray() );
+        return view('multiauth::admin.doctor.Prescription',compact('result' , 'patientList' , 'hospital' ,'diseaseList' , 'treatmentList'));
     }
 
    
@@ -28,13 +37,25 @@ class prescriptionController extends Controller
     
     public function store(Request $request)
     {
+        //dd( $request->toArray() );
         $request->validate([
-            'name' => 'required|unique:hospitals',
-            'phone' => 'required|unique:hospitals',
-            'address' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'patient_id' => 'required',
+            'hospital_id' => 'required',
+            'disease_id' => 'required',
+            'treatment_id' => 'required',
+            'division' => 'required',
+            'district' => 'required',
+            'status' => 'required',
+            'date' => 'required',
+            'doctor_id' => 'required',
         ]);
          $inputs = $request->except('_token');
-         $create = Hospital::create($inputs);
+         /*$inputs['disease_ids'] = json_encode( $inputs['disease_ids'] );
+         $inputs['treatment_ids'] = json_encode( $inputs['treatment_ids'] );
+         //dd($inputs);*/
+         $create = Prescription::create($inputs);
          return back()->with('status','✔ Added');
     }
 
