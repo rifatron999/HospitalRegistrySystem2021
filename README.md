@@ -1,6 +1,7 @@
 # HospitalRegistrySystem2021
 this is a project for hospital registry system  <br>
-Laravel | Bootstrap 4 | Select2 | Jquery | Accessors & Mutators | MySql | MultiAUth Admin | Mailable | ERD | Eager Loading | DataTables---
+Laravel | Bootstrap 4 | Select2 | Jquery | Accessors & Mutators | MySql | MultiAUth Admin | Mailable | ERD | Eager Loading | DataTables
+---
 Configure local development server (beta 0.0.1)
 
 - [ ] Turn your Your development Server(e.g wampp / xampp)
