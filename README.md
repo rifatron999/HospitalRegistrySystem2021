@@ -6,7 +6,7 @@ Configure local (development server) and Feature Showcase
 
 - [ ] Turn your Your development Server(e.g wampp / xampp)
 	- [ ] http://localhost/phpmyadmin/
-	- [ ] create database ~ hospitalregistrysystem2021_test
+	- [ ] create database ~ hospreg
 - [ ] clone from github
 ```
 git clone https://github.com/rifatron999/HospitalRegistrySystem2021.git
