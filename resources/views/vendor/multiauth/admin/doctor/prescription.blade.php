@@ -4,36 +4,35 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default ">
-                <div class="panel-heading">Patient</div>
+                <div class="panel-heading">Prescription</div>
                 <hr>
                 <div class="panel-body">
-                    <form method="post" enctype="multipart/form-data" action="{{ route('admin.patient.store') }}">
+                    <form method="post" enctype="multipart/form-data" action="{{ route('admin.treatment.store') }}">
                         @csrf
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label  class=" label label-primary">Code</label>
-                                <input name="code" type="text" class="form-control form-control-sm" value="{{ uniqid() }}" required readonly>
-                            </div>
-                        </div>
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label  class=" label label-primary">Name</label>
                                 <input name="name" type="text" class="form-control form-control-sm" value="{{ old('name') }}" required >
                             </div>
                             <div class="col-sm-6">
-                                <label  class=" label label-primary">Email</label>
-                                <input name="email" type="email" class="form-control form-control-sm" value="{{ old('email') }}" required>
+                                <label  class=" label label-primary">Type</label>
+                                <select name="type" class="form-control form-control-sm" required>
+                                        <option value="">select</option>
+                                        <option value="Medicine">Medicine</option>
+                                        <option value="Therapy">Therapy</option>
+                                        <option value="Surgery">Surgery</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-12">
-                                <label  class=" label label-primary"> Address</label>
-                                <textarea  name="address" class="form-control " required >{{ old('address') }} </textarea>
+                                <label  class=" label label-primary"> Description</label>
+                                <textarea  name="description" class="form-control " required >{{ old('description') }} </textarea>
                             </div>
                         </div>
                         <div class="form-group row d-flex justify-content-center">
                             <div class="">
-                                <button type="submit" class="btn btn-success btn-sm center-block">+ Add Patient</button>
+                                <button type="submit" class="btn btn-success btn-sm center-block">+ Add Treatment</button>
                             </div>
                         </div>
                     </form>
@@ -43,9 +42,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Code</th>
-                            <th scope="col">Address</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -55,12 +53,11 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{$data->name}}</td>
-                                <td>{{$data->email}}</td>
-                                <td>{{$data->code}}</td>
-                                <td>{{$data->address}}</td>
+                                <td>{{$data->type}}</td>
+                                <td>{{$data->description}}</td>
                                 <td>
-                                    <a class="btn btn-success btn-sm"  href="{{route('admin.patient.edit',Crypt::encrypt($data->id))}}" target="_blank" title="Edit"><i class="fa fa-edit"></i></a>
-                                    <a href="{{route('admin.patient.destroy',Crypt::encrypt($data->id))}}" title="Remove Employee" onclick="return confirm('Are you sure ?')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </a>
+                                    <a class="btn btn-success btn-sm"  href="{{route('admin.treatment.edit',Crypt::encrypt($data->id))}}" target="_blank" title="Edit"><i class="fa fa-edit"></i></a>
+                                    <a href="{{route('admin.treatment.destroy',Crypt::encrypt($data->id))}}" title="Remove Employee" onclick="return confirm('Are you sure ?')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </a>
                                 </td>
 
                             </tr>

@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-}); 
+})->name('landing'); 
 
 
  Route::group([
@@ -46,5 +46,12 @@ Route::get('/', function () {
 	Route::get('/patientDelete/{id}','patientController@destroy')->middleware('role:doctor')->name('admin.patient.destroy');
 	Route::get('/patientEditView/{id}','patientController@edit')->middleware('role:doctor')->name('admin.patient.edit');
 	Route::post('/patientUpdate/{id}','patientController@update')->middleware('role:doctor')->name('admin.patient.update');
+
+	//prescription
+	Route::get('/prescription','prescriptionController@index')->middleware('role:doctor')->name('admin.prescription');
+	Route::post('/prescription','prescriptionController@store')->middleware('role:doctor')->name('admin.prescription.store');
+	Route::get('/prescriptionDelete/{id}','prescriptionController@destroy')->middleware('role:doctor')->name('admin.prescription.destroy');
+	Route::get('/prescriptionEditView/{id}','prescriptionController@edit')->middleware('role:doctor')->name('admin.prescription.edit');
+	Route::post('/prescriptionUpdate/{id}','prescriptionController@update')->middleware('role:doctor')->name('admin.prescription.update');
 
 });
