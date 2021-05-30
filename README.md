@@ -1,12 +1,11 @@
 # HospitalRegistrySystem2021
 this is a project for hospital registry system  <br>
-Laravel | Bootstrap 4 | Select2 | Jquery | Accessors & Mutators | MySql | MultiAUth Admin | Mailable | ERD | Eager Loading | DataTables
----
-Configure local (development server) and Feature Showcase
+Laravel | Bootstrap 4 | Select2 | Jquery | Accessors & Mutators | MySql | MultiAUth Admin | Mailable | ERD | Eager Loading | DataTables---
+Configure local development server (beta 0.0.1)
 
 - [ ] Turn your Your development Server(e.g wampp / xampp)
 	- [ ] http://localhost/phpmyadmin/
-	- [ ] create database ~ hospreg
+	- [ ] create database ~ hospitalregistrysystem2021_test
 - [ ] clone from github
 ```
 git clone https://github.com/rifatron999/HospitalRegistrySystem2021.git
@@ -70,6 +69,34 @@ MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
 php artisan key:generate
 ```
+- [ ] update \vendor\bitfumes\laravel-multiauth\src\Http\Controllers\AdminController.php index function
+```
+public function index()
+    {
+        $result = Prescription::with([
+                                'patient' => function($q){
+                                    $q->select('id', 'name');
+                                },
+                                'hospital' => function($q){
+                                    $q->select('id', 'name');
+                                },
+                                'doctor' => function($q){
+                                    $q->select('id', 'name');
+                                },
+                            ->orderBy('date', 'desc')
+                            ->paginate(2);
+            foreach ($result as $key => $value) {
+                $diseaseList = Disease::select('id' , 'name' )->whereIn('id' , $value['disease_id'])->get()->toArray() ;
+                $result[$key]['disease'] = $diseaseList;
+
+                $treatmentList = Treatment::select('id' , 'name' )->whereIn('id' , $value['treatment_id'])->get()->toArray() ;
+                $result[$key]['treatment'] = $treatmentList;
+            }
+        return view('multiauth::admin.home' , compact('result') );
+
+    }
+```
+
 - [ ] migrate tables
 ```
 php artisan migrate
