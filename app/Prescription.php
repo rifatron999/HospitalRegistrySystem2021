@@ -3,10 +3,37 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Patient;
+use App\Hospital;
+use App\Disease;
+use App\Treatment;
+use App\Admin;
 
 class Prescription extends Model
 {
-    protected $fillable = [ 'title' , 'description' , 'division' , 'district' , 'status' , 'date' , 'patient_id' , 'hospital_id', 'doctor_id' , 'disease_id' , 'treatment_id'];
+    protected $fillable = [ 'title' , 'description' , 'division' , 'district' , 'status' , 'date' , 'patient_id' , 'hospital_id'						, 'doctor_id' , 'disease_id' , 'treatment_id'
+						  ];
+
+  	public function patient()
+	{
+		return $this->belongsTo(Patient::class);
+	}
+	public function hospital()
+	{
+		return $this->belongsTo(Hospital::class);
+	}
+	public function disease()
+	{
+		return $this->belongsTo(Disease::class);
+	}
+	public function treatment()
+	{
+		return $this->belongsTo(Treatment::class);
+	}
+	public function doctor()
+	{
+		return $this->belongsTo(Admin::class);
+	}
 
     public function setDiseaseIdAttribute($value)
     {
