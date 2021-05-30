@@ -10,16 +10,19 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Hospital Registry System 2021') }}</title>
-
+    
     <!-- Styles -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 
 </head>
 
 <body>
     <div id="app">
-        @if(date('Y-m-d') < Config::get('helpers.trail'))
+        @if(date('Y-m-d') < Config::get('helpers.trial'))
             <nav class="navbar navbar-default navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
@@ -68,6 +71,7 @@
                                         @admin('doctor')
                                         <a class="col-sm-1" href="{{ route('admin.prescription') }}">Prescription</a> 
                                         @endadmin
+                                        <br>
                                         <a class="col-sm-1" href="{{ route('admin.logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                                 Logout
@@ -111,6 +115,15 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
 </body>
 
+
 </html>
+

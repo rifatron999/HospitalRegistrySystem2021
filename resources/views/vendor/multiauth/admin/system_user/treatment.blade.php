@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <label  class=" label label-primary">Type</label>
-                                <select name="type" class="form-control form-control-sm" required>
+                                <select name="type" class="form-control form-control-sm select2" required>
                                         <option value="">select</option>
                                         <option value="Medicine">Medicine</option>
                                         <option value="Therapy">Therapy</option>
