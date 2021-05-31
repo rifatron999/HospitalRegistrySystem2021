@@ -1,5 +1,5 @@
 # HospitalRegistrySystem2021
-this is a project for hospital registry system  <br>
+This is a project for hospital registry system  <br>
 Laravel | Bootstrap 4 | Select2 | Jquery | Accessors & Mutators | MySql | MultiAUth Admin | Mailable | ERD | Eager Loading | DataTables
 ---
 Configure local development server (beta 0.0.1)
@@ -71,6 +71,14 @@ MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 php artisan key:generate
 ```
 - [ ] update \vendor\bitfumes\laravel-multiauth\src\Http\Controllers\AdminController.php index function
+```
+use App\Prescription;
+use App\Patient;
+use App\Hospital;
+use App\Disease;
+use App\Treatment;
+```
+
 ```
 public function index()
     {
