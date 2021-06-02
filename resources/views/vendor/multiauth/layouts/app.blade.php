@@ -31,48 +31,48 @@
                             {{ config('app.name', 'Hospital Registry System') }} {{ ucfirst(config('multiauth.prefix')) }}
                         </a>
                         <!-- Collapsed Hamburger -->
-                        <button type="button" class="btn btn-light btn-sm" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+                        <!-- <button type="button" class="btn btn-light btn-sm" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
                             Navbar
-                        </button>
+                        </button> -->
                     </div>
 
-                    <div class="collapse navbar-collapse border border-success border-top-0" id="app-navbar-collapse">
+                    <div class="navbar-collapse  " id="app-navbar-collapse">
                         <!-- Left Side Of Navbar -->
                         <ul class="nav navbar-nav">
                             &nbsp;
                         </ul>
 
                         <!-- Right Side Of Navbar -->
-                        <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav ">
                             <!-- Authentication Links -->
                             @guest
-                            <li><a href="{{route('admin.login')}}">{{ ucfirst(config('multiauth.prefix')) }} Login</a></li>
+                            <!-- <li><a href="{{route('admin.login')}}">{{ ucfirst(config('multiauth.prefix')) }} Login</a></li> -->
                             @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                        {{ Auth::user()->name }} <span class="caret"></span>
+                            <li class="dropdown ">
+                                <a href="#" class=" " data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                        {{ Auth::user()->name }} 
                                     </a>
 
-                                <ul class="dropdown-menu-s border  ">
+                                <ul class="dropdown-menu-s border bg-dark ">
                                     <li class="d-flex justify-content-around">
                                         @admin('super')
-                                        <a class="col-sm-1" href="{{ route('admin.show') }}">{{ ucfirst(config('multiauth.prefix')) }}</a>
-                                        <a class="col-sm-1" href="{{ route('admin.roles') }}">Roles</a> 
+                                        <a class="col-sm-1 text-white" href="{{ route('admin.show') }}">{{ ucfirst(config('multiauth.prefix')) }}</a>
+                                        <a class="col-sm-1 text-white" href="{{ route('admin.roles') }}">Roles</a> 
                                         @endadmin
                                         @admin('system_user')
-                                        <a class="col-sm-1" href="{{ route('admin.hospital') }}">Hospital</a> 
-                                        <a class="col-sm-1" href="{{ route('admin.treatment') }}">Treament</a> 
-                                        <a class="col-sm-1" href="{{ route('admin.disease') }}">Disease</a> 
+                                        <a class="col-sm-1 text-white" href="{{ route('admin.hospital') }}">Hospital</a> 
+                                        <a class="col-sm-1 text-white" href="{{ route('admin.treatment') }}">Treament</a> 
+                                        <a class="col-sm-1 text-white" href="{{ route('admin.disease') }}">Disease</a> 
                                         @endadmin()
                                         @admin('hospital_agent','doctor')
-                                        <a class="col-sm-1" href="{{ route('admin.patient') }}">Patient</a> 
+                                        <a class="col-sm-1 text-white" href="{{ route('admin.patient') }}">Patient</a> 
                                         <!-- <a class="col-sm-1" href="{{ route('admin.roles') }}">Refer</a>  -->
                                         @endadmin
                                         @admin('doctor')
-                                        <a class="col-sm-1" href="{{ route('admin.prescription') }}">Prescription</a> 
+                                        <a class="col-sm-1 text-white" href="{{ route('admin.prescription') }}">Prescription</a> 
                                         @endadmin
                                         <br>
-                                        <a class="col-sm-1" href="{{ route('admin.logout') }}" onclick="event.preventDefault();
+                                        <a class="col-sm-1 text-white" href="{{ route('admin.logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                                 Logout
                                             </a>
@@ -107,7 +107,7 @@
          @else
             <span class="navbar-brand" style="margin:auto; display:table; border:1px solid red;">
                 Session Ended <br>
-                Please Communicate with <b>Developer</b> <br>
+               
                 https://github.com/rifatron999
             </span>
         @endif

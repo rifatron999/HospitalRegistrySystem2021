@@ -91,7 +91,7 @@ public function index()
                                 },
                                 'doctor' => function($q){
                                     $q->select('id', 'name');
-                                },
+                                }])
                             ->orderBy('date', 'desc')
                             ->paginate(2);
             foreach ($result as $key => $value) {
@@ -103,7 +103,7 @@ public function index()
             }
         return view('multiauth::admin.home' , compact('result') );
 
-    }
+    }   
 ```
 
 - [ ] migrate tables

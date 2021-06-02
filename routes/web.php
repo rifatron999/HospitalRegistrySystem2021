@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+if(date('Y-m-d') < Config::get('helpers.trial')){
 
 Route::get('/', function () {
     return view('welcome');
@@ -55,3 +56,6 @@ Route::get('/', function () {
 	Route::post('/prescriptionUpdate/{id}','prescriptionController@update')->middleware('role:doctor')->name('admin.prescription.update');
 
 });
+}else{
+	\Artisan::call('down');
+}
