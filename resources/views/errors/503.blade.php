@@ -2,4 +2,4 @@
 
 @section('title', __('Service Unavailable'))
 @section('code', '503')
-@section('message', __($exception->getMessage() ?: 'Service Unavailable / trial version ended |  © https://github.com/rifatron999 '))
+@section('message', __($exception->getMessage() ?: 'Trial version ended |  © https://github.com/rifatron999  | Service Unavailable '))
