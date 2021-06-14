@@ -7,7 +7,7 @@
                 <div class="panel-heading">Treatment</div>
                 <hr>
                 <div class="panel-body">
-                    <form method="post" enctype="multipart/form-data" action="{{route('admin.prescription.update',Crypt::encrypt($result[0]['id']))}}">
+                    <form method="post" enctype="multipart/form-data" action="{{route('admin.prescription.update',Crypt::encrypt($result[0]['id']))}}" novalidate>
                         @csrf
                         <div class="form-group row">
                             <div class="col-sm-8">
@@ -77,27 +77,7 @@
                                 </select>
                             </div>
                         </div>
-                        <!-- <div class="form-group row">
-                            <div class="col-sm-6">
-                                <label  class=" label label-primary">Division</label>
-                                <select name="division" class="form-control form-control-sm select2" required  id="divisions" onchange="divisionsList();">
-                                    <option value="">select</option>
-                                    <option value="Barishal">Barishal</option>
-                                    <option value="Chattogram">Chattogram</option>
-                                    <option value="Dhaka">Dhaka</option>
-                                    <option value="Khulna" disabled>Khulna</option>
-                                    <option value="Mymensingh" disabled>Mymensingh</option>
-                                    <option value="Rajshahi" disabled>Rajshahi</option>
-                                    <option value="Rangpur" disabled>Rangpur</option>
-                                    <option value="Sylhet" disabled>Sylhet</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6">
-                                <label  class=" label label-primary">District</label>
-                                <select name="district" class="form-control form-control-sm select2" required  id="distr" > 
-                                </select>
-                            </div>
-                        </div> -->
+                        
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label  class=" label label-primary">Status</label>
@@ -122,7 +102,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <label  class=" label label-primary">Doctor</label>
-                                <input name="doctor_id" type="number" class="form-control form-control-sm" value="{{ $result[0]['doctor']['name'] }}" required hidden>
+                                <!-- <input name="doctor_id" type="number" class="form-control form-control-sm" value="{{ $result[0]['doctor']['name'] }}" required hidden> -->
                                 <input  type="text" class="form-control form-control-sm" value="{{ $result[0]['doctor']['name'] }}" readonly>
                             </div>
                             

@@ -139,11 +139,8 @@ class prescriptionController extends Controller
             'hospital_id' => 'required',
             'disease_id' => 'required',
             'treatment_id' => 'required',
-            'division' => 'required',
-            'district' => 'required',
             'status' => 'required',
             'date' => 'required',
-            'doctor_id' => 'required',
         ]);
         $id = \Crypt::decrypt($id);
         $inputs = $request->except('_token');
